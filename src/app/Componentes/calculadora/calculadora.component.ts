@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalculadoraComponent implements OnInit {
 
+  title = '';
+  Text = '';
+  SubText = '';
+  operadores =  false;
+  operando1: number;
+  operando2: number;
+  operador = '';
+  resultado = '';
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  pressBtn(Valu){
+    this.Text += Valu;
+
   }
 
 }

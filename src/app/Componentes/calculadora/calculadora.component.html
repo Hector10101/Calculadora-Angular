@@ -1,40 +1,38 @@
 <div class="Calculadora">
     <div class="Display bg-primary">
-        <div class="subPantalla"></div>
-        <div class="pantalla"></div>
+        <div class="subPantalla">{{SubText}}</div>
+        <div class="pantalla">{{Text}}</div>
       </div>
     <div class="ContenedorBtn">
         <div class="eliminar">
             <button class="btn  operacion btn-primary" >C</button>
         </div>
         <div>
-            <button class="btn Numero" >7</button>
-            <button class="btn Numero" >8</button>
-            <button class="btn Numero" >9</button>
-            <button class="btn operacion btn-primary" >/</button>
+            <button class="btn Numero" (click)="pressBtn('7')">7</button>
+            <button class="btn Numero" (click)="pressBtn('8')">8</button>
+            <button class="btn Numero" (click)="pressBtn('9')">9</button>
+            <button class="btn operacion btn-primary" (click)="pressBtn('/')">/</button>
+        </div>
+        <div>
+            <button class="btn Numero" (click)="pressBtn('4')">4</button>
+            <button class="btn Numero"(click)="pressBtn('5')" >5</button>
+            <button class="btn Numero" (click)="pressBtn('6')">6</button>
+            <button class="btn operacion btn-primary" (click)="pressBtn('*')">*</button>
 
         </div>
         <div>
-            <button class="btn Numero" >4</button>
-            <button class="btn Numero" >5</button>
-            <button class="btn Numero" >6</button>
-            <button class="btn operacion btn-primary" >*</button>
+            <button class="btn Numero" (click)="pressBtn('1')">1</button>
+            <button class="btn Numero" (click)="pressBtn('2')">2</button>
+            <button class="btn Numero " (click)="pressBtn('3')">3</button>
+            <button class="btn operacion btn-primary" (click)="pressBtn('-')">-</button>
 
 
         </div>
         <div>
-            <button class="btn Numero" >1</button>
-            <button class="btn Numero" >2</button>
-            <button class="btn Numero" >3</button>
-            <button class="btn operacion btn-primary" >-</button>
-
-
-        </div>
-        <div>
-            <button class="btn Numero" >0</button>
-            <button class="btn Numero" >.</button>
+            <button class="btn Numero " (click)="pressBtn('0')">0</button>
+            <button class="btn Numero " (click)="pressBtn('.')">.</button>
             <button class="btn operacion btn-primary" >=</button>
-            <button class="btn operacion btn-primary" >+</button>       
+            <button class="btn operacion btn-primary" (click)="pressBtn('+')">+</button>          
         </div>
     </div>
 </div> 
