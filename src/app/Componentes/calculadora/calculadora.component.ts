@@ -19,6 +19,7 @@ export class CalculadoraComponent implements OnInit {
   resultado = '';
   Operacion = [];
   data = '';
+  hide=true;
 
   constructor( public operacionesService: OperacionesService) { 
     if(localStorage.getItem('Datos')){
@@ -151,11 +152,12 @@ export class CalculadoraComponent implements OnInit {
     this.operando1 = parseFloat(this.resultado);
     this.operadores  = false;
   }
-
-  
-  AgregarLocal(operacion){
-    console.log(operacion);
-    localStorage.setItem('Datos', JSON.stringify(operacion));
+  verHistorial(){
+    if(this.hide === true){
+      this.hide = false;
+    }else{
+      this.hide = true;
+    }
   }
 }
 
