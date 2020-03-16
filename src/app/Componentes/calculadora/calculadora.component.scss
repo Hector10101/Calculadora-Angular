@@ -1,0 +1,45 @@
+.Calculadora{
+    background-color: rgb(0, 0, 0);
+
+	padding: 20px;  
+	border-radius: 15px;
+}
+.btn{
+    width: 100px;
+    height: 85px;
+    margin: 5px 5px;	
+	padding: 30px 30px;
+    font-size: 20px;
+    border-radius: 10px; 
+
+}
+.Numero{
+    background: #ffff;
+}
+.eliminar{
+    text-align: right;
+}
+.Display{
+
+	border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 15px;
+    color: rgb(0, 0, 0);
+    color: white;
+
+}
+.pantalla{
+    height: 3rem;
+    padding: 1% 1% 1% 1%  ;
+    font-size: 2.5rem;
+    text-align: right;
+    font-family: Courier, monospace;
+}
+
+.subPantalla {
+    padding: 1% 1% 0% 1%  ;
+    font-size: 1.5rem;
+    height: 2rem;
+    text-align: right;
+    font-family: Courier, monospace;
+} 
