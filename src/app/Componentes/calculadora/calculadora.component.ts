@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { OperacionesService } from 'src/app/Servicios/operaciones.service';
+
 
 @Component({
   selector: 'app-calculadora',
@@ -18,7 +20,11 @@ export class CalculadoraComponent implements OnInit {
   Operacion = [];
   data = '';
 
-  constructor() { }
+  constructor( public operacionesService: OperacionesService) { 
+    if(localStorage.getItem('Datos')){
+      this.Operacion = JSON.parse(localStorage.getItem('Datos'));
+    }
+  }
 
   ngOnInit(): void {
   }
@@ -134,7 +140,12 @@ export class CalculadoraComponent implements OnInit {
     this.data = this.operando1 + this.operador + this.operando2 + " = " + this.resultado;
     this.Operacion.push(this.data);
 
-    this.AgregarLocal(this.Operacion);
+    this.operacionesService.addOperacione({
+      Valor1: this.operando1.toString(),
+      Valor2: this.operando2.toString(),
+      Operador: this.operador,
+      Resultado: this.resultado
+    });
 
 
     this.operando1 = parseFloat(this.resultado);

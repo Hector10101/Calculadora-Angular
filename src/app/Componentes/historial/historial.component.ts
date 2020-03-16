@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { OperacionesService } from 'src/app/Servicios/operaciones.service';
+import { Operacion } from 'src/app/Modelos/Operacion';
 
 @Component({
   selector: 'app-historial',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistorialComponent implements OnInit {
 
-  constructor() { }
+  operacion: Operacion[];
+  constructor( public operacionService: OperacionesService) { }
 
   ngOnInit(): void {
+    this.operacion = this.operacionService.getOperaciones();
   }
 
 }

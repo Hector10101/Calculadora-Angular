@@ -6,19 +6,23 @@ import { AppComponent } from './app.component';
 import { CalculadoraComponent } from './Componentes/calculadora/calculadora.component';
 import { NavegationComponent } from './Componentes/navegation/navegation.component';
 import { HistorialComponent } from './Componentes/historial/historial.component';
+import { OperacionComponent } from './Componentes/operacion/operacion.component';
+import {OperacionesService} from './Servicios/operaciones.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     CalculadoraComponent,
     NavegationComponent,
-    HistorialComponent
+    HistorialComponent,
+    OperacionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [OperacionesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
