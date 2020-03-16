@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class CalculadoraComponent implements OnInit {
 
   title = '';
-  Text = '';
+  Text = '0';
   SubText = '';
   operadores =  false;
   operando1: number;
@@ -21,39 +21,60 @@ export class CalculadoraComponent implements OnInit {
   ngOnInit(): void {
   }
   clearAll(){
-    this.Text = '';
+    this.Text = '0';
     this.SubText = '';
     this.operadores = false;
     this.operador = '';
+    this.resultado = '';
   }
   clear(){
     this.Text = this.Text.substring(0, this.Text.length - 1);
+    if(this.Text.length === 0){
+      this.Text = '0';
+    }
+    if(this.operadores  === false){
+      this.SubText ="";
+    }
+    if(this.operadores  === false){
+      this.operando1 = parseFloat(this.Text);
+    }
+    this.operando2 = parseFloat(this.Text);
   }
 
   pressBtn(Valu){
-    if (Valu === '0' || Valu === '1' || Valu === '2' || Valu === '3'|| Valu === '4' || Valu === '5' || Valu === '6'|| Valu === '7' || Valu === '8' || Valu === '9' || Valu === '.') {
-      this.Text += Valu;
-      if(this.operadores  === false){
-        this.operando1 = parseFloat(this.Text);
-      }else if(this.operadores  === true){
-        this.operando2 = parseFloat(this.Text);
-      }
-    }
-
-    if (Valu === '+' || Valu === '-' || Valu === '*' || Valu === '/') {
-      if(this.operadores  === false){
-        this.operador = Valu;
+    if(this.Text !== '0'){
+      if (Valu === '0' || Valu === '1' || Valu === '2' || Valu === '3'|| Valu === '4' || Valu === '5' || Valu === '6'|| Valu === '7' || Valu === '8' || Valu === '9' || Valu === '.') {
         this.Text += Valu;
-        this.SubText ='';
-        this.SubText += this.Text;
-        this.Text = '';
-        this.operadores  = true;
+        if(this.operadores  === false){
+          this.operando1 = parseFloat(this.Text);
+        }else if(this.operadores  === true){
+          this.operando2 = parseFloat(this.Text);
+        }
+      }
+      if (Valu === '+' || Valu === '-' || Valu === '*' || Valu === '/') {
+        if(this.operadores  === false){
+          this.operador = Valu;
+          this.Text += Valu;
+          this.SubText ='';
+          this.SubText += this.Text;
+          this.Text = '0';
+          this.operando2 = parseFloat(this.Text);
+          this.operadores  = true;
+        }
+      }
+      if (this.Text.length === 10) {
+        return;
+      }
+    }else{
+      if (Valu === '0'||Valu === '1'||Valu === '2'||Valu === '3'||Valu === '4'||Valu === '5'||Valu === '6'||Valu === '7'||Valu === '8'||Valu === '9') {
+        this.Text = Valu;
+        if(this.operadores  === false){
+          this.operando1 = parseFloat(this.Text);
+        }else if(this.operadores  === true){
+          this.operando2 = parseFloat(this.Text);
+        }
       }
     }
-    if (this.Text.length === 10) {
-      return;
-    }
-
   }
 
   Resultado(){
