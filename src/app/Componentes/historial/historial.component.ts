@@ -15,5 +15,17 @@ export class HistorialComponent implements OnInit {
   ngOnInit(): void {
     this.operacion = this.operacionService.getOperaciones();
   }
+  deleteAllOperaciones(){
+    if(localStorage.getItem('DataOperacion') !== null){
+      var confirmacion= confirm("¿Desea eliminar el historial?");
+      if(confirmacion === true){
+        localStorage.removeItem('DataOperacion');
 
+
+        this.operacion = [];
+        this.operacion = this.operacionService.getOperaciones();
+      }
+    }  
+
+  }
 }

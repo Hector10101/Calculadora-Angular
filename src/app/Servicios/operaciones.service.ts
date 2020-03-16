@@ -12,6 +12,7 @@ export class OperacionesService {
   }
   getOperaciones(){
     if(localStorage.getItem('DataOperacion')=== null){
+      this.operaciones = [];
       return this.operaciones;
     }else{
       this.operaciones = JSON.parse(localStorage.getItem('DataOperacion'));

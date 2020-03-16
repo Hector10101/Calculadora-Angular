@@ -4,7 +4,7 @@
     </div>
     <app-operacion *ngFor="let operacion of operacion" [operacion]="operacion"></app-operacion>
     <div class="mt-2 tx-align-right">
-        <button class="btn btn-danger">Eliminar</button>
+        <button class="btn btn-danger" (click)="deleteAllOperaciones()">Eliminar</button>
     </div>
 
 </div>
