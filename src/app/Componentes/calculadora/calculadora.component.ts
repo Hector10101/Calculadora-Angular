@@ -20,6 +20,15 @@ export class CalculadoraComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  clearAll(){
+    this.Text = '';
+    this.SubText = '';
+    this.operadores = false;
+    this.operador = '';
+  }
+  clear(){
+    this.Text = this.Text.substring(0, this.Text.length - 1);
+  }
 
   pressBtn(Valu){
     if (Valu === '0' || Valu === '1' || Valu === '2' || Valu === '3'|| Valu === '4' || Valu === '5' || Valu === '6'|| Valu === '7' || Valu === '8' || Valu === '9' || Valu === '.') {
