@@ -7,13 +7,20 @@ import { Operacion } from '../Modelos/Operacion';
 })
 export class OperacionesService {
   operaciones: Operacion[];
-  constructor() {}
-
+  constructor() {
+    this.operaciones =[]
+  }
   getOperaciones(){
-    return this.operaciones;
+    if(localStorage.getItem('DataOperacion')=== null){
+      return this.operaciones;
+    }else{
+      this.operaciones = JSON.parse(localStorage.getItem('DataOperacion'));
+      return this.operaciones; 
+    }
   }
 
   addOperacione(operacion: Operacion){
+    this.operaciones.push(operacion);
     let operaciones: Operacion[] = [];
     if(localStorage.getItem('DataOperacion')=== null){
       operaciones.push(operacion);
