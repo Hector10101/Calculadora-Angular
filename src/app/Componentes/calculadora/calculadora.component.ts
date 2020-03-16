@@ -15,10 +15,23 @@ export class CalculadoraComponent implements OnInit {
   operando2: number;
   operador = '';
   resultado = '';
+  Operacion = [];
+  data = '';
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+  verLocal(){
+    var mostrar= JSON.parse(localStorage.getItem('Datos')+'\n'); 
+    var Text= document.getElementById('Histo');
+    var Cantidad = mostrar.length-1;
+        Text.textContent= "";
+        for(var i=0;i<=Cantidad;i++){
+
+           Text.textContent= Text.textContent + mostrar[i];
+        }
+
   }
   clearAll(){
     this.Text = '0';
@@ -43,7 +56,7 @@ export class CalculadoraComponent implements OnInit {
 
   pressBtn(Valu){
     if(this.Text !== '0'){
-      if (Valu === '0' || Valu === '1' || Valu === '2' || Valu === '3'|| Valu === '4' || Valu === '5' || Valu === '6'|| Valu === '7' || Valu === '8' || Valu === '9' || Valu === '.') {
+      if (Valu === '0' || Valu === '1' || Valu === '2' || Valu === '3'|| Valu === '4' || Valu === '5' || Valu === '6'|| Valu === '7' || Valu === '8' || Valu === '9') {
         this.Text += Valu;
         if(this.operadores  === false){
           this.operando1 = parseFloat(this.Text);
@@ -78,6 +91,9 @@ export class CalculadoraComponent implements OnInit {
   }
 
   Resultado(){
+    if(localStorage.getItem('Datos')){
+      this.Operacion = JSON.parse(localStorage.getItem('Datos'));
+    }
     switch(this.operador){
       case '+': 
         this.Sumar();
@@ -115,8 +131,20 @@ export class CalculadoraComponent implements OnInit {
     this.SubText = this.operando1 + this.operador + this.operando2;
     this.Text = this.resultado;
 
+    this.data = this.operando1 + this.operador + this.operando2 + " = " + this.resultado;
+    this.Operacion.push(this.data);
+
+    this.AgregarLocal(this.Operacion);
+
+
     this.operando1 = parseFloat(this.resultado);
     this.operadores  = false;
+  }
+
+  
+  AgregarLocal(operacion){
+    console.log(operacion);
+    localStorage.setItem('Datos', JSON.stringify(operacion));
   }
 }
 
